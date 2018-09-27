@@ -1,0 +1,14 @@
+{
+  "name": "configprovider",
+  "version": "1.0.0",
+  "description": "This library is useful for fetching encrypted db config to use for the application",
+  "main": "configprovider.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pravin Lolage <pravindot17@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "postgreslib": "git+https://github.com/pravindot17/postgreslib.git"
+  }
+}
