@@ -1,4 +1,4 @@
-Rabbitmq Library for Queue operations
+Retrieve env wise DB config without revealing db config to the outside world
 ===================
 This library is useful for fetching encrypted db config to use for the application
 
@@ -28,7 +28,7 @@ INSERT INTO app_config(config, env, createdon, updatedon) VALUES ( encrypt( '{"h
 ```
 
 ### Get used to it
-Get the library in your node modules using following command:
+Get library in your node modules using following command:
 ```
 npm install --save https://github.com/pravindot17/configprovider
 ```
