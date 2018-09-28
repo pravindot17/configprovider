@@ -57,3 +57,6 @@ let dbConfig = configProvider.getConfig().dbConfig;
 
 // You can also add more config to the cache
 configProvider.addConfig('appConfig', {"title": "My worst application", "isEmailRequired": true});
+
+// You can also merge config into existing config
+configProvider.mergeConfig({"smsConfig": { "isEnabled": true, "content": "Have a good day!" }});

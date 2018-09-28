@@ -40,6 +40,9 @@ module.exports = function () {
             if(!key) throw new Error(`Invalid config key provided`);
             if(!value) throw new Error(`Invalid config value provided`);
             appConfig[key] = value;
+        },
+        mergeConfig: (config) => {
+            return appConfig = {...appConfig, ...config};
         }
     }
 }();
