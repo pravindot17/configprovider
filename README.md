@@ -10,21 +10,23 @@ CREATE DATABASE master_db_config;
 
 -- create table
 CREATE TABLE app_config(
-   id  SERIAL PRIMARY KEY,
-   config           bytea,
-   env            varchar(30),
-   is_active        bool default true,
-   createdon timestamp,
-   updatedon timestamp
+   id           SERIAL PRIMARY KEY,
+   config       bytea,
+   env          varchar(30),
+   project_key  varchar(30),
+   is_active    bool default true,
+   createdon    timestamp,
+   updatedon    timestamp
 );
 
 -- this is required for running encrypt and decrypt functions
 CREATE EXTENSION pgcrypto;
 
-INSERT INTO app_config(config, env, createdon, updatedon) VALUES ( encrypt( '{"host":"localhost","port":"5432","database":"myDb","user":"postgres","password":"root","max":"10","idleTimeoutMillis":"30000"}', 'ml9gi2r5ce275y3i8sxq', 'aes'), 'development', '2018-09-26 10:01:00', '2018-09-26 10:01:00' );
+INSERT INTO app_config(config, env, project_key, createdon, updatedon) VALUES ( encrypt( '{"host":"localhost","port":"5432","database":"myDb","user":"postgres","password":"root","max":"10","idleTimeoutMillis":"30000"}', 'ml9gi2r5ce275y3i8sxq', 'aes'), 'development', 'YOUR_PROJECT', '2018-09-26 10:01:00', '2018-09-26 10:01:00' );
 
 -- ml9gi2r5ce275y3i8sxq - is the encryption key, you can set anything based on your project and environment
 -- aes - is the encryption algorithm
+-- YOUR_PROJECT - unique identifier each project
 ```
 
 ### Get used to it
@@ -48,7 +50,7 @@ let masterDbConfig = {
 }
 
 // init the connection in your bootstrap file using following code
-configProvider.init(config, 'MY_SECRET_KEY', 'development').then((appConfig) => {
+configProvider.init(config, 'MY_SECRET_KEY', 'development', 'YOUR_PROJECT').then((appConfig) => {
 	console.log('received the db config here in appConfig.dbConfig');
 }).catch(console.error);
 
