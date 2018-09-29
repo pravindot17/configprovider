@@ -50,7 +50,7 @@ let masterDbConfig = {
 }
 
 // init the connection in your bootstrap file using following code
-configProvider.init(config, 'MY_SECRET_KEY', 'development', 'YOUR_PROJECT').then((appConfig) => {
+configProvider.init(masterDbConfig, 'MY_SECRET_KEY', 'development', 'YOUR_PROJECT').then((appConfig) => {
 	console.log('received the db config here in appConfig.dbConfig');
 }).catch(console.error);
 
